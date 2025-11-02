@@ -1,6 +1,6 @@
 # 🫀 CardioIA
 
-**CardioIA-Web** es una aplicación web inteligente para la evaluación del riesgo cardiovascular basada en machine learning. Permite a los profesionales de la salud y usuarios realizar predicciones sobre la probabilidad de enfermedades cardíacas utilizando un modelo de regresión logística entrenado con datos clínicos.
+**CardioIA** es una aplicación web inteligente para la evaluación del riesgo cardiovascular basada en machine learning. Permite a los usuarios realizar predicciones sobre la probabilidad de enfermedades cardíacas utilizando un modelo de regresión logística entrenado con datos clínicos.
 
 ## 📋 Tabla de Contenidos
 
