@@ -1,4 +1,4 @@
-# ❤️ CardioIA-Web: Tu Asistente de Prevención Cardíaca
+# ❤️ CardioIA: Tu Asistente de Prevención Cardíaca
 
 **CardioIA-Web** es una aplicación web innovadora diseñada para la prevención proactiva de enfermedades cardíacas. Utilizando un modelo de inteligencia artificial, nuestra herramienta calcula el riesgo cardíaco de un usuario en porcentaje, ofreciendo una primera evaluación accesible y fácil de entender.
 
