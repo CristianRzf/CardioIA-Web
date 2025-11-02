@@ -1,11 +1,10 @@
-# 🫀 CardioIA-Web
+# 🫀 CardioIA
 
 **CardioIA-Web** es una aplicación web inteligente para la evaluación del riesgo cardiovascular basada en machine learning. Permite a los profesionales de la salud y usuarios realizar predicciones sobre la probabilidad de enfermedades cardíacas utilizando un modelo de regresión logística entrenado con datos clínicos.
 
 ## 📋 Tabla de Contenidos
 
 - [Características](#-características)
-- [Arquitectura del Proyecto](#-arquitectura-del-proyecto)
 - [Tecnologías Utilizadas](#-tecnologías-utilizadas)
 - [Requisitos Previos](#-requisitos-previos)
 - [Instalación y Configuración](#-instalación-y-configuración)
@@ -26,31 +25,10 @@
 - 🔒 **CORS configurado**: Comunicación segura entre frontend y backend
 - ⚡ **Respuesta rápida**: Predicciones en tiempo real
 
-## 🏗 Arquitectura del Proyecto
-
-El proyecto sigue una arquitectura cliente-servidor moderna:
-
-```
-┌─────────────────┐         HTTP/REST          ┌─────────────────┐
-│                 │         API Calls          │                 │
-│   Frontend      │◄──────────────────────────►│    Backend      │
-│   (React)       │      JSON Responses        │   (FastAPI)     │
-│                 │                            │                 │
-└─────────────────┘                            └────────┬────────┘
-                                                        │
-                                                        │ Loads
-                                                        ▼
-                                                ┌───────────────┐
-                                                │  ML Model     │
-                                                │  (.pkl files) │
-                                                └───────────────┘
-```
-
 ## 🛠 Tecnologías Utilizadas
 
 ### Frontend
 - **React 19.1.1**: Biblioteca de JavaScript para construir interfaces de usuario
-- **Vite 7.1.7**: Build tool y servidor de desarrollo rápido
 - **React Router DOM 7.9.4**: Enrutamiento para aplicaciones React
 - **Axios 1.13.1**: Cliente HTTP para peticiones a la API
 - **Recharts 3.3.0**: Librería de gráficos para visualización de datos
@@ -324,11 +302,5 @@ Las contribuciones son bienvenidas. Para contribuir:
 ## 📄 Licencia
 
 Este proyecto es de código abierto y está disponible bajo la [Licencia MIT](LICENSE).
-
-## 🙏 Agradecimientos
-
-- Comunidad de FastAPI por la excelente documentación
-- Equipo de React y Vite por las herramientas de desarrollo
-- Comunidad de scikit-learn por las librerías de ML
 
 **Nota**: Este proyecto es una herramienta de apoyo y no debe reemplazar el diagnóstico médico profesional. Siempre consulta con un profesional de la salud certificado para decisiones médicas.
