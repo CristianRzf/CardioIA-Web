@@ -36,7 +36,7 @@ except Exception as e:
 db = None # Inicializa db a None si la conexión falla
 try:
     # Asegúrate de que este nombre sea EXACTO.
-    cred = credentials.Certificate("codigo aqui")
+    cred = credentials.Certificate("cardioia-d2a7a-firebase-adminsdk-fbsvc-c5fc6aba9c.json")
     firebase_admin.initialize_app(cred)
     db = firestore.client()
     print("--- ✅ Backend: Conexión a Firebase Firestore establecida. ---")
