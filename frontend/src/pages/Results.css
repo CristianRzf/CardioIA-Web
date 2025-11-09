@@ -40,6 +40,21 @@
 .riesgo-moderado { background-color: #fff3cd; color: #856404; }
 .riesgo-alto { background-color: #f8d7da; color: #721c24; }
 
+/* 💡 Estilos ajustados para el Risk Badge usado en Results.jsx */
+.risk-badge {
+    border-radius: 8px;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.risk-badge.bajo { background-color: #d4edda; color: #155724; }
+.risk-badge.moderado { background-color: #fff3cd; color: #856404; }
+.risk-badge.alto { background-color: #f8d7da; color: #721c24; }
+.risk-badge.medio { background-color: #fff3cd; color: #856404; }
+
+
 .chart-wrapper {
   width: 100%;
   max-width: 400px;
@@ -86,4 +101,86 @@
   display: flex;
   justify-content: center;
   margin-top: 2.5rem;
+}
+
+/*
+ * ===================================================
+ * 🔥 ESTILOS ADICIONALES PARA EL REPORTE DE IA (ReactMarkdown) 🔥
+ * ===================================================
+ */
+
+/* Contenedor principal del reporte */
+.ai-report-section {
+    margin-top: 3rem;
+    padding: 2rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.report-header {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #000;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #8B0000; /* Color distintivo */
+    padding-bottom: 0.5rem;
+}
+
+/* Estilos para el contenido Markdown generado por ReactMarkdown */
+.report-content h1,
+.report-content h2,
+.report-content h3,
+.report-content h4 {
+    color: #8B0000; /* Color principal para títulos del reporte */
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.report-content p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+.report-content ul,
+.report-content ol {
+    margin-left: 20px;
+    margin-bottom: 1.5rem;
+    padding-left: 0;
+}
+
+.report-content li {
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #555;
+    /* Anulación de estilos de factores si se heredan */
+    border: none !important;
+    padding: 0 !important;
+    text-align: left !important;
+    background-color: transparent !important;
+    list-style-type: disc; /* Asegurar que se usen puntos o números */
+}
+
+/* Hacer que las negritas (strong) destaquen */
+.report-content strong {
+    font-weight: 700;
+    color: #000;
+}
+
+/* Estilo para la sección antigua de recomendaciones, si se usa */
+.recommendations ul {
+    list-style: disc;
+    margin-left: 20px;
+    padding-left: 0;
+}
+.recommendations li {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
 }

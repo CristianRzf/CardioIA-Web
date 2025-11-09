@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts";
+import ReactMarkdown from "react-markdown"; // 🔥 1. NUEVO IMPORT NECESARIO
 import "./Results.css";
 
 function Results() {
@@ -16,7 +17,13 @@ function Results() {
       if (parsedData.nivel_riesgo && !parsedData.riesgo) {
         parsedData.riesgo = parsedData.nivel_riesgo;
       }
-
+      
+      // Aseguramos que 'recomendaciones' sea null si no existe, por si el backend
+      // aún las envía en un campo separado.
+      if (!parsedData.recomendaciones) {
+        parsedData.recomendaciones = null;
+      }
+      
       setResultado(parsedData);
     } else {
       navigate('/');
@@ -66,6 +73,23 @@ function Results() {
           Probabilidad de riesgo cardiovascular: <strong>{resultado.probabilidad}%</strong>
         </p>
       </div>
+      
+      {/* ---------------------------------------------------- */}
+      {/* 🔥 2. NUEVA SECCIÓN: REPORTE DE IA DE GEMINI 🔥 */}
+      {/* ---------------------------------------------------- */}
+      {/* Solo se muestra si el campo reporte_ia existe y no está vacío */}
+      {resultado.reporte_ia && (
+        <div className="ai-report-section">
+          <h3 className="report-header">
+            Reporte Detallado de CardioIA (Generado por IA)
+          </h3>
+          <div className="report-content">
+            {/* Usa ReactMarkdown para interpretar el texto plano con formato Markdown */}
+            <ReactMarkdown>{resultado.reporte_ia}</ReactMarkdown>
+          </div>
+        </div>
+      )}
+      {/* ---------------------------------------------------- */}
 
       <div className="chart-container">
         <h3>Distribución de Riesgo</h3>
@@ -91,7 +115,9 @@ function Results() {
         </ResponsiveContainer>
       </div>
 
-      {resultado.recomendaciones && (
+      {/* La sección de recomendaciones se mantiene solo si NO hay reporte_ia 
+          para evitar duplicidad. */}
+      {resultado.recomendaciones && !resultado.reporte_ia && (
         <div className="recommendations">
           <h3>Recomendaciones</h3>
           <ul>
