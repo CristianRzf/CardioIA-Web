@@ -50,7 +50,7 @@ function Evaluation() {
       obesidad: Number(obesidad),
       nivel_estres: Number(estres),
       nivel_azucar: Number(azucar),
-      angina_induci_ejercicio: Number(angina), // Cuidado aquí, verifica el nombre en tu backend
+      angina_inducida_ejercicio: Number(angina), // Cuidado aquí, verifica el nombre en tu backend
       tipo_dolor_pecho: Number(tipoDolorPecho)
     };
 

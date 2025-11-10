@@ -36,7 +36,9 @@ except Exception as e:
 db = None # Inicializa db a None si la conexión falla
 try:
     # Asegúrate de que este nombre sea EXACTO.
-    cred = credentials.Certificate("cardioia-d2a7a-firebase-adminsdk-fbsvc-c5fc6aba9c.json")
+
+    # linea de codigo de credenciales de firebase
+
     firebase_admin.initialize_app(cred)
     db = firestore.client()
     print("--- ✅ Backend: Conexión a Firebase Firestore establecida. ---")
@@ -48,9 +50,10 @@ except Exception as e:
 # 1.6. Configuración de la API de Gemini
 # ---------------------------------------------
 client = None
-GEMINI_API_KEY = "AIzaSyD1n0-S3hSDapVp8HeqjQGaAMqjCazNQas" # ⚠️ ¡REEMPLAZA ESTA CLAVE!
-# Usar una variable de entorno es la mejor práctica: os.getenv('GEMINI_API_KEY')
-try:
+
+#linea de codigo api de gemini
+
+}try:
     if GEMINI_API_KEY != "INS_TU_CLAVE_GEMINI_AQUI":
         client = genai.Client(api_key=GEMINI_API_KEY)
         print("--- ✅ Backend: Cliente Gemini inicializado. ---")
