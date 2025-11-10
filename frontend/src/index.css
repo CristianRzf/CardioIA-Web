@@ -1,3 +1,22 @@
+/* Variables CSS para consistencia y facilidad de mantenimiento */
+:root {
+  --primary-bg: #f4f4f4; /* Fondo principal */
+  --secondary-bg: #ffffff; /* Fondo de contenedores */
+  --text-color: #333; /* Color de texto principal */
+  --muted-text: #555; /* Color de texto muted */
+  --primary-color: #8B0000; /* Color primario (rojo oscuro) */
+  --disabled-bg: #c0c0c0; /* Fondo deshabilitado */
+  --btn-secondary-bg: #e0e0e0; /* Fondo botón secundario */
+  --btn-secondary-hover: #d0d0d0; /* Hover botón secundario */
+  --shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+  --transition: all 0.3s ease; /* Transición suave */
+  --border-radius: 8px; /* Radio de borde estándar */
+  --border-radius-btn: 5px; /* Radio de borde para botones */
+  --max-width-page: 1000px;
+  --padding-page: 2.5rem;
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
 /* src/index.css */
 * {
   box-sizing: border-box;
@@ -6,12 +25,13 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
+  font-family: var(--font-family);
+  background-color: var(--primary-bg);
+  color: var(--text-color);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  line-height: 1.5; /* Mejora: Mejor legibilidad */
 }
 
 #root {
@@ -27,16 +47,26 @@ main.main-content {
 a {
   text-decoration: none;
   color: inherit;
+  transition: var(--transition); /* Mejora: Transición suave */
+}
+
+a:hover {
+  color: var(--primary-color); /* Mejora: Color de hover consistente */
+}
+
+a:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
 }
 
 /* Contenedor blanco para páginas */
 .page-container {
-  max-width: 1000px;
+  max-width: var(--max-width-page);
   margin: 2rem auto;
-  padding: 2.5rem;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: var(--padding-page);
+  background-color: var(--secondary-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
 }
 
 /* Clases de Botones */
@@ -46,32 +76,44 @@ a {
   font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
-  border-radius: 5px;
-  transition: all 0.2s;
+  border-radius: var(--border-radius-btn);
+  transition: var(--transition);
   font-size: 0.9rem;
   text-align: center;
+  display: inline-block; /* Mejora: Mejor display */
 }
 
 .btn-submit {
-  background-color: #8B0000; /* Rojo oscuro */
+  background-color: var(--primary-color);
   color: #ffffff;
   min-width: 200px;
 }
+
 .btn-submit:hover {
   opacity: 0.85;
+  transform: translateY(-2px); /* Mejora: Efecto de elevación */
 }
+
 .btn-submit:disabled {
-  background-color: #c0c0c0;
+  background-color: var(--disabled-bg);
   cursor: not-allowed;
+  opacity: 0.6; /* Mejora: Opacidad adicional para deshabilitado */
 }
 
 .btn-clear {
-  background-color: #e0e0e0;
-  color: #555;
+  background-color: var(--btn-secondary-bg);
+  color: var(--muted-text);
   min-width: 200px;
 }
+
 .btn-clear:hover {
-  background-color: #d0d0d0;
+  background-color: var(--btn-secondary-hover);
+  transform: translateY(-2px); /* Mejora: Efecto de elevación */
+}
+
+.btn:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
 }
 
 /* Responsive */
@@ -79,5 +121,11 @@ a {
   .page-container {
     margin: 1rem;
     padding: 1.5rem;
+  }
+
+  .btn {
+    padding: 0.7rem 1.2rem; /* Mejora: Padding reducido */
+    font-size: 0.8rem; /* Mejora: Tamaño de fuente reducido */
+    min-width: 150px; /* Mejora: Ancho mínimo reducido */
   }
 }

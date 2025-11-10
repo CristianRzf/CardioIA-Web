@@ -1,15 +1,44 @@
-/* src/components/Footer.css */
+/* Variables CSS para consistencia y facilidad de mantenimiento */
+:root {
+  --primary-color: #9b0000;
+  --secondary-color: #9b0000;
+  --text-color: #333;
+  --light-text: #c0c0c0;
+  --white: #fff;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  --header-bg: #000000; /* Fondo gris claro para el header */
+}
+
+/* Definición de la animación heartbeat para el efecto de latido */
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+}
+
+/* Footer */
 .app-footer {
-  background-color: #4a4a4a;
-  color: #c0c0c0;
+  background-color: var(--secondary-color);
+  color: var(--light-text);
   padding: 2rem 2.5rem;
   text-align: center;
   font-size: 0.85rem;
   margin-top: auto; /* Empuja el footer al fondo */
+  line-height: 1.5;
 }
 
 .app-footer strong {
-  color: #ffffff;
+  color: var(--white);
 }
 
 .app-footer p {
@@ -20,16 +49,22 @@
   line-height: 1.5;
 }
 
+/* Header */
 .header {
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: var(--header-bg);
+  box-shadow: 0 2px 5px var(--shadow);
   padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .logo {
@@ -41,28 +76,82 @@
   height: 45px;
   width: auto;
   margin-right: 10px;
+  /* Efecto de latido aplicado al logo */
+  -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
+  animation: heartbeat 1.5s ease-in-out infinite both;
 }
 
 .logo-text {
   font-size: 22px;
   font-weight: bold;
-  color: #a00000;
+  color: var(--primary-color);
   text-decoration: none;
+  transition: var(--transition);
+}
+
+.logo-text:hover {
+  color: #e0e0e0; /* Ajustado a un rojo aún más oscuro para el hover, manteniendo la progresión */
 }
 
 .nav-links {
   list-style: none;
   display: flex;
   gap: 15px;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links li a {
   text-decoration: none;
-  color: #333;
+  color: var(--text-color);
   font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.nav-links li a:hover {
+  background-color: var(--shadow);
+  color: var(--primary-color);
 }
 
 .nav-links li a.active {
-  color: #a00000;
+  color: var(--primary-color);
+  background-color: rgba(128, 0, 0, 0.1); /* Ajustado para coincidir con el nuevo primary-color */
 }
 
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .nav-links li a {
+    width: 100%;
+    text-align: left;
+  }
+
+  .app-footer {
+    padding: 1.5rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Accesibilidad: Estados de foco */
+.nav-links li a:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.logo-text:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}

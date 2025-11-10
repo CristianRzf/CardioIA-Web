@@ -3,7 +3,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Importa tus páginas
 import Evaluation from './pages/Evaluation';
-import Results from './pages/Results'; // <-- 1. IMPORTA LA NUEVA PÁGINA
+import Results from './pages/Results';
+import Home from './pages/Home';
+
 
 // Importa tus componentes de layout
 import Header from './components/Header';

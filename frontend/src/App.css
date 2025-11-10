@@ -1,21 +1,43 @@
+/* Variables CSS para consistencia y facilidad de mantenimiento */
+:root {
+  --primary-bg: #ffffff; /* Fondo principal */
+  --text-color: #000000; /* Color de texto */
+  --accent-color: #646cff; /* Color de acento */
+  --react-accent: #61dafb; /* Color de acento para React */
+  --muted-text: #888; /* Color de texto muted */
+  --shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  --transition: all 0.3s ease; /* Transición suave */
+  --max-width: 1280px;
+  --padding: 2rem;
+  --logo-height: 6em;
+  --logo-padding: 1.5em;
+}
+
 #root {
-  max-width: 1280px;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 2rem;
+  padding: var(--padding);
   text-align: center;
+  background-color: var(--primary-bg); /* Mejora: Fondo explícito */
+  min-height: 100vh; /* Mejora: Altura mínima para cubrir viewport */
+  font-family: 'Arial', sans-serif; /* Mejora: Fuente base */
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
+  height: var(--logo-height);
+  padding: var(--logo-padding);
   will-change: filter;
-  transition: filter 300ms;
+  transition: var(--transition);
+  display: block; /* Mejora: Mejor display */
+  margin: 0 auto; /* Mejora: Centrado */
 }
+
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em var(--accent-color)aa);
 }
+
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em var(--react-accent)aa);
 }
 
 @keyframes logo-spin {
@@ -35,8 +57,47 @@
 
 .card {
   padding: 2em;
+  border-radius: 8px; /* Mejora: Bordes redondeados */
+  box-shadow: var(--shadow); /* Mejora: Sombra para profundidad */
+  background-color: var(--primary-bg);
+  margin: 1rem auto; /* Mejora: Margen para separación */
+  max-width: 600px; /* Mejora: Ancho máximo */
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Mejora: Efecto de elevación en hover */
 }
 
 .read-the-docs {
-  color: #888;
+  color: var(--muted-text);
+  font-size: 0.9rem; /* Mejora: Tamaño de fuente consistente */
+  margin-top: 1rem; /* Mejora: Espaciado superior */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem; /* Mejora: Padding reducido en móvil */
+  }
+
+  .logo {
+    height: 4em; /* Mejora: Tamaño reducido en móvil */
+    padding: 1em;
+  }
+
+  .card {
+    padding: 1.5em; /* Mejora: Padding reducido */
+  }
+}
+
+/* Accesibilidad: Estados de foco */
+.logo:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.card:focus-within {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
 }

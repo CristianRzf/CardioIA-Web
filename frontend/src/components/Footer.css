@@ -1,21 +1,54 @@
-/* src/components/Footer.css */
+/* Variables CSS para consistencia y facilidad de mantenimiento */
+:root {
+  --footer-bg: #4a4a4a;
+  --footer-text: #c0c0c0;
+  --footer-strong: #ffffff;
+  --footer-max-width: 800px;
+  --transition: all 0.3s ease;
+}
+
+/* Footer */
 .app-footer {
-  background-color: #4a4a4a;
-  color: #c0c0c0;
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
   padding: 2rem 2.5rem;
   text-align: center;
   font-size: 0.85rem;
   margin-top: auto; /* Empuja el footer al fondo */
+  line-height: 1.5;
+  /* Mejora: Agregar una sombra sutil para separación visual */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .app-footer strong {
-  color: #ffffff;
+  color: var(--footer-strong);
+  /* Mejora: Agregar transición para efectos suaves */
+  transition: var(--transition);
 }
 
 .app-footer p {
   margin-bottom: 0.5rem;
-  max-width: 800px;
+  max-width: var(--footer-max-width);
   margin-left: auto;
   margin-right: auto;
   line-height: 1.5;
+  /* Mejora: Mejorar legibilidad con un ancho máximo más flexible */
+}
+
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+  .app-footer {
+    padding: 1.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .app-footer p {
+    max-width: 100%; /* Permitir ancho completo en móviles para mejor lectura */
+  }
+}
+
+/* Accesibilidad: Estados de foco para elementos interactivos (si los hay en el footer) */
+.app-footer a:focus {
+  outline: 2px solid var(--footer-strong);
+  outline-offset: 2px;
 }

@@ -1,43 +1,133 @@
+/* Variables CSS para consistencia y facilidad de mantenimiento */
+:root {
+  --primary-color: #8B0000; /* Color principal (rojo oscuro) */
+  --secondary-color: #555; /* Color para etiquetas */
+  --error-color: #d93025; /* Color de errores */
+  --background: #fff; /* Fondo del formulario */
+  --shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  --transition: all 0.3s ease; /* Transición suave */
+  --font-size-h2: 2rem;
+  --font-size-label: 0.9rem;
+  --font-size-input: 1rem;
+  --font-size-error: 0.9rem;
+  --border-radius: 8px; /* Radio de borde estándar */
+  --border-radius-large: 25px; /* Radio de borde para elementos redondeados */
+}
+
 /* src/pages/Evaluation.css */
 .evaluation-container h2 {
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: var(--font-size-h2);
   text-align: center;
+  color: var(--primary-color); /* Mejora: Color consistente con el tema */
+  margin-bottom: 1rem; /* Mejora: Espaciado inferior para separación */
+}
+
+/* Pantalla de consentimiento */
+.disclaimer {
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--background);
+  border: 2px solid var(--primary-color); /* Mejora: Borde rojo consistente con el formulario */
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  max-width: 600px; /* Mejora: Ancho máximo para centrar */
+  margin: 0 auto;
+  transition: var(--transition); /* Mejora: Transición suave para hover */
+}
+
+.disclaimer:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Mejora: Sombra más pronunciada en hover */
+}
+
+.disclaimer p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: var(--secondary-color);
+}
+
+.consent-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.consent-buttons button {
+  padding: 0.8rem 2rem;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius-large);
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: var(--font-size-input);
+  cursor: pointer;
+  transition: var(--transition);
+  min-width: 150px; /* Mejora: Ancho mínimo para consistencia */
+}
+
+.consent-buttons button:hover {
+  background-color: #a00000; /* Mejora: Color más oscuro en hover */
+  transform: translateY(-2px); /* Mejora: Efecto de elevación sutil */
+}
+
+.consent-buttons button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.consent-buttons button.btn-clear {
+  background-color: #e0e0e0;
+  color: var(--secondary-color);
+  border-color: #e0e0e0;
+}
+
+.consent-buttons button.btn-clear:hover {
+  background-color: #d0d0d0;
+  transform: translateY(-2px);
 }
 
 /* Contenedor del formulario */
 .form-wrapper {
-  border: 2px solid #8B0000;
-  border-radius: 10px;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius);
   padding: 2.5rem;
   margin-top: 2rem;
-}
-
-/* Grid para los campos del formulario */
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem 2rem; /* Fila / Columna */
+  background-color: var(--background); /* Mejora: Fondo blanco explícito */
+  box-shadow: var(--shadow); /* Mejora: Sombra para profundidad */
+  max-width: 1000px; /* Mejora: Ancho máximo para centrar y limitar */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1.5rem; /* Mejora: Espaciado entre grupos */
 }
 
 .form-group label {
-  font-size: 0.9rem;
-  color: #555;
+  font-size: var(--font-size-label);
+  color: var(--secondary-color);
   margin-bottom: 0.5rem;
+  font-weight: 500; /* Mejora: Peso de fuente para mejor legibilidad */
 }
 
 .form-group input,
 .form-group select {
   padding: 0.8rem 1rem;
-  border: 2px solid #8B0000;
-  border-radius: 25px; /* Bordes redondeados del boceto */
-  font-size: 1rem;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius-large);
+  font-size: var(--font-size-input);
   width: 100%;
+  transition: var(--transition); /* Mejora: Transición suave en foco */
+  background-color: var(--background);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-color); /* Mejora: Resaltar borde en foco */
+  box-shadow: 0 0 5px rgba(139, 0, 0, 0.5); /* Mejora: Sombra de foco para accesibilidad */
 }
 
 .form-buttons {
@@ -47,30 +137,76 @@
   margin-top: 2.5rem;
 }
 
+.form-buttons button {
+  padding: 0.8rem 2rem;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius-large);
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: var(--font-size-input);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.form-buttons button:hover {
+  background-color: #a00000; /* Mejora: Color más oscuro en hover */
+  transform: translateY(-2px); /* Mejora: Efecto de elevación sutil */
+}
+
+.form-buttons button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.form-buttons button:disabled {
+  background-color: #c0c0c0;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-buttons button.btn-clear {
+  background-color: #e0e0e0;
+  color: var(--secondary-color);
+  border-color: #e0e0e0;
+}
+
+.form-buttons button.btn-clear:hover {
+  background-color: #d0d0d0;
+  transform: translateY(-2px);
+}
+
 /* Mensaje de error */
-.error-message {
-  color: #d93025;
-  font-size: 0.9rem;
-  text-align: center;
-  margin-top: 1.5rem;
+.alert {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
   font-weight: bold;
 }
 
 /* Responsive para el formulario */
 @media (max-width: 900px) {
-  .form-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+  .form-wrapper {
+    padding: 2rem; /* Mejora: Padding reducido */
   }
 }
 
 @media (max-width: 600px) {
-  .form-grid {
-    grid-template-columns: 1fr; /* 1 columna en móvil */
-  }
   .form-wrapper {
     padding: 1.5rem;
+    margin-top: 1rem; /* Mejora: Margen superior reducido */
   }
   .form-buttons {
     flex-direction: column;
+    gap: 1rem; /* Mejora: Gap reducido en columna */
+  }
+  .consent-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .evaluation-container h2 {
+    font-size: 1.5rem; /* Mejora: Tamaño de fuente reducido en móvil */
+  }
+  .disclaimer {
+    padding: 1.5rem; /* Mejora: Padding reducido */
   }
 }

@@ -1,10 +1,30 @@
+/* Variables CSS para consistencia y facilidad de mantenimiento */
+:root {
+  --primary-color: #8B0000; /* Color principal para acentos y bordes */
+  --secondary-color: #444; /* Color para títulos secundarios */
+  --text-color: #333; /* Color de texto principal */
+  --light-bg: #f9f9f9; /* Fondo claro para secciones */
+  --border-color: #e0e0e0; /* Color de bordes sutiles */
+  --shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  --transition: all 0.3s ease; /* Transición suave */
+  --font-size-h2: 2rem;
+  --font-size-h3: 1.2rem;
+  --font-size-large: 2.5rem;
+  --font-size-medium: 1.5rem;
+  --font-size-normal: 1rem;
+  --font-size-small: 0.9rem;
+  --border-radius: 8px; /* Radio de borde estándar */
+  --border-radius-large: 25px; /* Radio de borde para elementos redondeados */
+}
+
 /* src/pages/Results.css */
 
 .results-container h2 {
   text-align: center;
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: var(--font-size-h2);
   margin-bottom: 2rem;
+  color: var(--primary-color); /* Mejora: Color consistente */
 }
 
 .result-summary {
@@ -12,26 +32,34 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  border-bottom: 2px solid #f0f0f0;
+  border-bottom: 2px solid var(--border-color);
   padding-bottom: 2rem;
+  margin-bottom: 2rem; /* Mejora: Espaciado inferior */
 }
 
 .riesgo-summary-box {
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   padding: 1rem 2rem;
   text-align: center;
   width: 100%;
   max-width: 400px;
+  box-shadow: var(--shadow); /* Mejora: Sombra para profundidad */
+  transition: var(--transition); /* Mejora: Transición suave */
+}
+
+.riesgo-summary-box:hover {
+  transform: translateY(-2px); /* Mejora: Efecto de elevación en hover */
 }
 
 .riesgo-label {
   display: block;
-  font-size: 1.1rem;
+  font-size: var(--font-size-normal);
   font-weight: 500;
+  margin-bottom: 0.5rem; /* Mejora: Espaciado */
 }
 
 .riesgo-texto {
-  font-size: 2.5rem;
+  font-size: var(--font-size-large);
   font-weight: 700;
 }
 
@@ -42,11 +70,17 @@
 
 /* 💡 Estilos ajustados para el Risk Badge usado en Results.jsx */
 .risk-badge {
-    border-radius: 8px;
-    padding: 0.5rem 1.5rem;
-    font-size: 1.25rem;
-    font-weight: 700;
-    text-transform: capitalize;
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  display: inline-block; /* Mejora: Mejor display */
+  transition: var(--transition);
+}
+
+.risk-badge:hover {
+  transform: scale(1.05); /* Mejora: Efecto de escala en hover */
 }
 
 .risk-badge.bajo { background-color: #d4edda; color: #155724; }
@@ -54,17 +88,17 @@
 .risk-badge.alto { background-color: #f8d7da; color: #721c24; }
 .risk-badge.medio { background-color: #fff3cd; color: #856404; }
 
-
 .chart-wrapper {
   width: 100%;
   max-width: 400px;
   text-align: center;
+  margin: 0 auto; /* Mejora: Centrado */
 }
 
 .riesgo-porcentaje {
-  font-size: 1.5rem;
+  font-size: var(--font-size-medium);
   font-weight: 700;
-  color: #333;
+  color: var(--text-color);
   margin-top: -15px; /* Ajuste para el gráfico */
 }
 
@@ -75,25 +109,33 @@
 
 .factors-container h3 {
   text-align: center;
-  font-size: 1.2rem;
-  color: #444;
+  font-size: var(--font-size-h3);
+  color: var(--secondary-color);
   margin-bottom: 1.5rem;
 }
 
 .factors-list {
   list-style: none;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Mejora: Uso de gap en lugar de margin-bottom */
 }
 
 .factors-list li {
-  font-size: 1rem;
+  font-size: var(--font-size-normal);
   padding: 0.8rem 1.2rem;
-  border: 2px solid #8B0000;
-  border-radius: 25px;
-  margin-bottom: 1rem;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius-large);
   text-align: center;
   font-weight: 500;
   background-color: #fdfdfd;
+  transition: var(--transition);
+}
+
+.factors-list li:hover {
+  background-color: rgba(139, 0, 0, 0.05); /* Mejora: Fondo sutil en hover */
+  transform: translateY(-2px);
 }
 
 /* Botón de Volver */
@@ -101,6 +143,27 @@
   display: flex;
   justify-content: center;
   margin-top: 2.5rem;
+}
+
+.form-buttons button {
+  padding: 0.8rem 2rem;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius-large);
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: var(--font-size-normal);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.form-buttons button:hover {
+  background-color: #a00000; /* Mejora: Color más oscuro en hover */
+  transform: translateY(-2px);
+}
+
+.form-buttons button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
 }
 
 /*
@@ -111,21 +174,24 @@
 
 /* Contenedor principal del reporte */
 .ai-report-section {
-    margin-top: 3rem;
-    padding: 2rem;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  margin-top: 3rem;
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background-color: var(--light-bg);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  max-width: 800px; /* Mejora: Ancho máximo para centrar */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .report-header {
-    text-align: center;
-    font-size: 1.5rem;
-    color: #000;
-    margin-bottom: 1.5rem;
-    border-bottom: 2px solid #8B0000; /* Color distintivo */
-    padding-bottom: 0.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
 }
 
 /* Estilos para el contenido Markdown generado por ReactMarkdown */
@@ -133,54 +199,89 @@
 .report-content h2,
 .report-content h3,
 .report-content h4 {
-    color: #8B0000; /* Color principal para títulos del reporte */
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
-    padding-bottom: 5px;
-    border-bottom: 1px dashed #ccc;
+  color: var(--primary-color);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 5px;
+  border-bottom: 1px dashed #ccc;
+  font-weight: 600; /* Mejora: Peso de fuente consistente */
 }
 
 .report-content p {
-    line-height: 1.6;
-    margin-bottom: 1rem;
-    font-size: 1rem;
-    color: #333;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: var(--font-size-normal);
+  color: var(--text-color);
 }
 
 .report-content ul,
 .report-content ol {
-    margin-left: 20px;
-    margin-bottom: 1.5rem;
-    padding-left: 0;
+  margin-left: 20px;
+  margin-bottom: 1.5rem;
+  padding-left: 0;
 }
 
 .report-content li {
-    line-height: 1.4;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-    color: #555;
-    /* Anulación de estilos de factores si se heredan */
-    border: none !important;
-    padding: 0 !important;
-    text-align: left !important;
-    background-color: transparent !important;
-    list-style-type: disc; /* Asegurar que se usen puntos o números */
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  font-size: var(--font-size-normal);
+  color: #555;
+  /* Anulación de estilos de factores si se heredan */
+  border: none !important;
+  padding: 0 !important;
+  text-align: left !important;
+  background-color: transparent !important;
+  list-style-type: disc; /* Asegurar que se usen puntos o números */
 }
 
 /* Hacer que las negritas (strong) destaquen */
 .report-content strong {
-    font-weight: 700;
-    color: #000;
+  font-weight: 700;
+  color: var(--text-color);
 }
 
 /* Estilo para la sección antigua de recomendaciones, si se usa */
 .recommendations ul {
-    list-style: disc;
-    margin-left: 20px;
-    padding-left: 0;
+  list-style: disc;
+  margin-left: 20px;
+  padding-left: 0;
 }
+
 .recommendations li {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    text-align: left;
+  font-size: var(--font-size-normal);
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .results-container h2 {
+    font-size: 1.5rem; /* Mejora: Tamaño reducido en móvil */
+  }
+
+  .riesgo-summary-box {
+    padding: 0.8rem 1.5rem; /* Mejora: Padding reducido */
+  }
+
+  .riesgo-texto {
+    font-size: 2rem; /* Mejora: Tamaño reducido */
+  }
+
+  .factors-list li {
+    padding: 0.6rem 1rem; /* Mejora: Padding reducido */
+  }
+
+  .ai-report-section {
+    padding: 1.5rem; /* Mejora: Padding reducido */
+    margin-top: 2rem;
+  }
+
+  .report-header {
+    font-size: 1.2rem; /* Mejora: Tamaño reducido */
+  }
+
+  .form-buttons {
+    flex-direction: column; /* Mejora: Botones en columna en móvil */
+    gap: 1rem;
+  }
 }

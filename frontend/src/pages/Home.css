@@ -1,0 +1,28 @@
+/* src/pages/Home.css */
+
+.home-hero-container {
+  background-color: #8B0000; /* Tu rojo oscuro de marca */
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Esto calcula la altura de la pantalla MENOS el espacio
+     que ocupan tu header y footer (ajústalo si es necesario) */
+  min-height: calc(100vh - 160px);
+
+  padding: 3rem 1.5rem;
+}
+
+/* Estilo para el botón "Comenzar Evaluación" */
+.btn-hero-cta {
+  font-weight: 600;
+  color: #8B0000; /* Texto rojo */
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+}
+
+.btn-hero-cta:hover {
+  color: #6a0000;
+  background-color: #f0f0f0;
+}
