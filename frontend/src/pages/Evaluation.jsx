@@ -50,7 +50,7 @@ function Evaluation() {
       obesidad: Number(obesidad),
       nivel_estres: Number(estres),
       nivel_azucar: Number(azucar),
-      angina_inducida_ejercicio: Number(angina), // Cuidado aquí, verifica el nombre en tu backend
+      angina_inducida_ejercicio: Number(angina),
       tipo_dolor_pecho: Number(tipoDolorPecho)
     };
 
@@ -65,12 +65,9 @@ function Evaluation() {
     }
   };
 
-  // --- Renderizado del componente (JSX Híbrido) ---
   return (
-    // Añadimos la clase 'container' de Bootstrap
     <div className="page-container evaluation-container container">
 
-      {/* --- PANTALLA DE CONSENTIMIENTO --- */}
       {!consentido && (
         <div className="disclaimer">
           <h2>Evaluación de Riesgo</h2>
@@ -116,7 +113,7 @@ function Evaluation() {
                 <div className="form-group">
                   <label htmlFor="edad" className="form-label">Edad</label>
                   {/* Usamos 'form-control' de Bootstrap */}
-                  <input type="number" id="edad" className="form-control" value={edad} onChange={(e) => setEdad(e.target.value)} required />
+                  <input type="number" id="edad" className="form-control" min="18" max="99" value={edad} onChange={(e) => setEdad(e.target.value)} required />
                 </div>
               </div>
 
@@ -147,14 +144,14 @@ function Evaluation() {
               <div className="col-md-4">
                 <div className="form-group">
                   <label htmlFor="presion" className="form-label">Presión Arterial (reposo)</label>
-                  <input type="number" id="presion" className="form-control" value={presion} onChange={(e) => setPresion(e.target.value)} required />
+                  <input type="number" id="presion" className="form-control" min="50" max="300" value={presion} onChange={(e) => setPresion(e.target.value)} required />
                 </div>
               </div>
 
               <div className="col-md-4">
                 <div className="form-group">
                   <label htmlFor="colesterol" className="form-label">Colesterol Sérico (mg/dl)</label>
-                  <input type="number" id="colesterol" className="form-control" value={colesterol} onChange={(e) => setColesterol(e.target.value)} required />
+                  <input type="number" id="colesterol" className="form-control" min="50" max="600" value={colesterol} onChange={(e) => setColesterol(e.target.value)} required />
                 </div>
               </div>
 
@@ -265,7 +262,7 @@ function Evaluation() {
             </div>
           </form>
         </div>
-      )} {/* Fin del renderizado condicional */}
+      )}
     </div>
   );
 }

@@ -2,16 +2,13 @@ import joblib
 import json
 import pandas as pd
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime
-
-# --- 🔥 NUEVOS IMPORTS PARA GEMINI 🔥 ---
+# NUEVOS IMPORTS PARA GEMINI
 import os 
-from google import genai 
-
-
-# --- FIREBASE IMPORTS ---
+from google import genai
+# FIREBASE IMPORTS
 import firebase_admin
 from firebase_admin import credentials, firestore
 
@@ -38,6 +35,7 @@ try:
     # Asegúrate de que este nombre sea EXACTO.
 
     # linea de codigo de credenciales de firebase
+    cred = credentials.Certificate("cardioia-d2a7a-firebase-adminsdk-fbsvc-c5fc6aba9c.json")
 
     firebase_admin.initialize_app(cred)
     db = firestore.client()
@@ -52,8 +50,9 @@ except Exception as e:
 client = None
 
 #linea de codigo api de gemini
+GEMINI_API_KEY = "AIzaSyD1n0-S3hSDapVp8HeqjQGaAMqjCazNQas"
 
-}try:
+try:
     if GEMINI_API_KEY != "INS_TU_CLAVE_GEMINI_AQUI":
         client = genai.Client(api_key=GEMINI_API_KEY)
         print("--- ✅ Backend: Cliente Gemini inicializado. ---")
@@ -64,35 +63,33 @@ except Exception as e:
 
 # --- 2. Modelos de datos ---
 class HeartData(BaseModel):
-    edad: int
-    sexo: int
-    colesterol: int
-    presion_arterial: int
-    frecuencia_cardiaca: int
-    fumador: int
-    consumo_alcohol: int
-    horas_ejercicio: int
-    historial_familiar: int
-    diabetes: int
-    obesidad: int
-    nivel_estres: int
-    nivel_azucar: int
-    angina_inducida_ejercicio: int
-    tipo_dolor_pecho: int
-
+    edad: int = Field(..., gt=17, lt=121, description="La edad debe estar entre 18 y 120")
+    sexo: int = Field(..., ge=0, le=1)  # ge = "greater or equal", le = "less or equal"
+    colesterol: int = Field(..., gt=50, lt=600)
+    presion_arterial: int = Field(..., gt=50, lt=300)
+    frecuencia_cardiaca: int = Field(..., gt=40, lt=250)
+    fumador: int = Field(..., ge=0, le=1)
+    consumo_alcohol: int = Field(..., ge=0, le=1)
+    horas_ejercicio: int = Field(..., ge=0, lt=100)
+    historial_familiar: int = Field(..., ge=0, le=1)
+    diabetes: int = Field(..., ge=0, le=1)
+    obesidad: int = Field(..., ge=0, le=1)
+    nivel_estres: int = Field(..., ge=1, le=10)
+    nivel_azucar: int = Field(..., gt=30, lt=600)
+    angina_inducida_ejercicio: int = Field(..., ge=0, le=1)
+    tipo_dolor_pecho: int = Field(..., ge=0, le=3)
 
 class PredictionResponse(BaseModel):
     probabilidad: float
     nivel_riesgo: str
     factores_influyentes: list[str]
-    reporte_ia: str # ⚠️ Nuevo campo para el reporte
+    reporte_ia: str
 
 
 # --- 3. Inicializar FastAPI ---
 app = FastAPI(title="CardioIA API")
 
 # --- 4. CORS ---
-# Mantengo origins=["*"] ya que es lo que tenías, aunque se recomienda listar dominios específicos.
 origins = ["*"]
 app.add_middleware(
     CORSMiddleware,
@@ -230,20 +227,15 @@ async def predict_heart_disease(data: HeartData):
             nivel = "Bajo"
 
         factores = ["Análisis de factores aún no implementado."]
-        
-        # ---------------------------------------------
-        # 🔥 6.5. GENERACIÓN DE REPORTE CON GEMINI 🔥
-        # ---------------------------------------------
+
+        # 6.5. GENERACIÓN DE REPORTE CON GEMINI
         reporte_ia = await generate_detailed_report(
             data=data.dict(), 
             prob_porcentaje=prob_porcentaje, 
             nivel=nivel
         )
-        # ---------------------------------------------
-        
-        # ---------------------------------------------
-        # 🎯 6.6. Almacenamiento Seguro en Firestore (Actualizado)
-        # ---------------------------------------------
+
+        # 6.6. Almacenamiento Seguro en Firestore (Actualizado)
         storage_status = "NO_GUARDADO"
         
         if db:
@@ -275,9 +267,8 @@ async def predict_heart_disease(data: HeartData):
                 print(f"--- ⚠️ WARNING: Falló el almacenamiento en Firebase: {storage_e} ---")
                 storage_status = "ERROR_FIREBASE"
         
-        # ---------------------------------------------
         # 7. Respuesta al Frontend (Actualizado)
-        # ---------------------------------------------
+
         resultado = {
             "probabilidad": prob_porcentaje,
             "nivel_riesgo": nivel,
