@@ -35,9 +35,9 @@
 - **React Google Charts 5.2.1**: Componentes de gráficos de Google
 
 ### Backend
-- **FastAPI**: Framework web moderno y rápido para Python
-- **scikit-learn**: Librería de machine learning
-- **pandas**: Manipulación y análisis de datos
+- **FastAPI**: Framework web moderno y rápido para Python.
+- **scikit-learn**: Librería de machine learning.
+- **pandas**: Manipulación y análisis de datos.
 - **numpy**: Computación numérica
 - **joblib**: Serialización de modelos de ML
 
