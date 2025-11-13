@@ -1,14 +1,44 @@
 .about-container h2 {
-  font-size: 2.2rem;
-  color: #8B0000; /* Título rojo del boceto */
+  font-size: 2.5rem; /* Aumentado ligeramente para más impacto visual */
+  color: #8B0000;
   text-transform: uppercase;
   font-weight: 700;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem; /* Aumentado para más separación del párrafo */
+  letter-spacing: 1px; /* Añadido para mejor legibilidad en mayúsculas */
 }
 
 .about-container p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-  text-align: justify; /* Justifica el texto */
+  font-size: 1.2rem; /* Aumentado para mejor legibilidad */
+  line-height: 1.8; /* Mejorado para comodidad de lectura */
+  margin-bottom: 1.8rem; /* Aumentado para espaciado consistente */
+  text-align: justify;
+  max-width: 800px; /* Añadido para limitar ancho y evitar líneas demasiado largas */
+  margin-left: auto; /* Centrado horizontal */
+  margin-right: auto;
+}
+
+/* Responsive para medidas en móviles */
+@media (max-width: 768px) {
+  .about-container h2 {
+    font-size: 2rem; /* Reducido en móvil */
+    margin-bottom: 2rem; /* Ajustado */
+    letter-spacing: 0.5px; /* Menor espaciado */
+  }
+
+  .about-container p {
+    font-size: 1.1rem; /* Reducido en móvil */
+    line-height: 1.7; /* Ajustado */
+    margin-bottom: 1.5rem; /* Ajustado */
+    text-align: left; /* Cambiado a izquierda para mejor legibilidad en móvil */
+  }
+}
+
+@media (max-width: 480px) {
+  .about-container h2 {
+    font-size: 1.8rem; /* Aún más pequeño en pantallas muy pequeñas */
+  }
+
+  .about-container p {
+    font-size: 1rem; /* Tamaño mínimo */
+  }
 }

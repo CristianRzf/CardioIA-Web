@@ -193,3 +193,27 @@
     margin-bottom: 1rem;
   }
 }
+/* Añade esto a tu Home.css existente */
+
+.home-hero-container {
+  position: relative;
+  color: var(--text-light); /* Corregido: cambiado de --text-white a --text-light (ya que --text-white no está definido en :root; usa --text-light que es #fff) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh; /* Esto está bien como fallback para unidades dinámicas de viewport */
+  padding: 2rem 1.5rem;
+  overflow: hidden;
+  margin-top: 0; /* Corregido: eliminado margin-top para evitar espacio adicional debajo del header; usa padding-top en su lugar si es necesario */
+  padding-top: 70px; /* Añadido: padding-top para dar espacio al header sticky sin crear margen visible */
+}
+
+/* Para móviles */
+@media (max-width: 768px) {
+  .home-hero-container {
+    margin-top: 0; /* Corregido: eliminado margin-top en móvil */
+    padding-top: 60px; /* Añadido: padding-top ajustado para móvil */
+    padding: 1rem; /* Mantengo el padding reducido, pero ajusta si es necesario */
+  }
+}

@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 import logo from "../assets/CardioIA.png";
 
+
 function Header() {
   return (
     <header className="header">
