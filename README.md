@@ -14,6 +14,7 @@
 - [Estructura del Proyecto](#-estructura-del-proyecto)
 - [Contribución](#-contribución)
 - [Licencia](#-licencia)
+- Link video Storytelling 
 
 ## ✨ Características
 
@@ -304,3 +305,6 @@ Las contribuciones son bienvenidas. Para contribuir:
 Este proyecto es de código abierto y está disponible bajo la [Licencia MIT](LICENSE).
 
 **Nota**: Este proyecto es una herramienta de apoyo y no debe reemplazar el diagnóstico médico profesional. Siempre consulta con un profesional de la salud certificado para decisiones médicas.
+
+## Video Storytelling
+https://drive.google.com/file/d/1RTptAxYVvd-A5iMUXCgxhySDfikZfrRS/view?usp=drivesdk
